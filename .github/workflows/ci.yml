@@ -50,6 +50,12 @@ jobs:
           cd ${{ env.WORKING_DIRECTORY_API }}
           echo 'Placeholder for creating a semantic release - Left Blank on Purpose'
           
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.2
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: dist # The folder the action should deploy.          
+
       #------------------------------------
       # develop branch
       #------------------------------------
