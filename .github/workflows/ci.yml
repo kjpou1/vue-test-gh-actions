@@ -20,13 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
-#       # Define some variables that will be used.
-#       - name: Define short sha variable
-#         run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
-#       # view before
-#       - name: Display the environment variables before
-#         run: |
-#           cat .env.production
+      # Define some variables that will be used.
+      - name: Define short sha variable
+        run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
+      # view before
+      - name: Display the environment variables before
+        run: |
+          cat .env.production
 
       # Environment file override
       - name: Make envfile
@@ -35,13 +35,13 @@ jobs:
           envkey_VUE_APP_API_VERSION: ${{secrets.VUE_APP_API_VERSION}}
           envkey_VUE_APP_API_URL: ${{secrets.VUE_APP_API_URL}}
           directory: './'
-          file_name: '.env'
+          file_name: '.env.production'
       # view it after
       - name: Display the environment variables after
         run: |
           pwd
           ls -al
-          cat .env
+          cat .env.production
       # Install 
       - name: Install build dependencies
         run: yarn install
