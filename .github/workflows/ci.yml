@@ -20,13 +20,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
-      # Define some variables that will be used.
-      - name: Define short sha variable
-        run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
-      # view before
-      - name: Display the environment variables before
-        run: |
-          cat .env.production
+#       # Define some variables that will be used.
+#       - name: Define short sha variable
+#         run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
+#       # view before
+#       - name: Display the environment variables before
+#         run: |
+#           cat .env.production
 
       # Environment file override
       - name: Make envfile
