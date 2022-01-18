@@ -5,6 +5,9 @@ node_modules
 /tests/e2e/videos/
 /tests/e2e/screenshots/
 
+# dotenv environment variables file
+.env
+.env.test
 
 # local env files
 .env.local
