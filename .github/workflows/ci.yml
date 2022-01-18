@@ -1,0 +1,63 @@
+name: CI
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest] # [macos-latest, ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    env:
+      WORKING_DIRECTORY_CLIENT: ./
+      PROJECT_NAME: ${{ github.event.repository.name }}
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      # Define some variables that will be used.
+      - name: Define short sha variable
+        run: echo "SHORT_SHA=`git rev-parse --short HEAD`" >> $GITHUB_ENV
+
+      # Install 
+      - name: Install build dependencies
+        run: yarn install
+
+      # Build it
+      - name: Install build dependencies
+        run: yarn build
+
+      # Start tests          
+      # TODO : Start up test server
+      - name: Run tests          
+        run: |
+          cd ${{ env.WORKING_DIRECTORY }}
+        working-directory: ${{env.WORKING_DIRECTORY}}
+        env:
+          NODE_ENV: test
+
+      #------------------------------------
+      # main branch deploy
+      #------------------------------------
+      - name: Create a Release
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          cd ${{ env.WORKING_DIRECTORY_API }}
+          echo 'Placeholder for creating a semantic release - Left Blank on Purpose'
+          
+      #------------------------------------
+      # develop branch
+      #------------------------------------
+      - name: Deploy to Staging
+        if: github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        run: |
+          cd ${{ env.WORKING_DIRECTORY_API }}
+          echo 'Placeholder for sending to staging - Left Blank on Purpose'
+
+
+
