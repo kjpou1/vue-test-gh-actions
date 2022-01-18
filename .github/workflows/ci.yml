@@ -39,7 +39,7 @@ jobs:
       # view it after
       - name: Display the environment variables after
         run: |
-          cat .env.producion
+          cat .env.production
       # Install 
       - name: Install build dependencies
         run: yarn install
