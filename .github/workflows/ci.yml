@@ -35,11 +35,11 @@ jobs:
           envkey_VUE_APP_API_VERSION: ${{secrets.VUE_APP_API_VERSION}}
           envkey_VUE_APP_API_URL: ${{secrets.VUE_APP_API_URL}}
           directory: './'
-          file_name: '.env.production'
+          file_name: '.env'
       # view it after
       - name: Display the environment variables after
         run: |
-          cat .env.production
+          cat .env
       # Install 
       - name: Install build dependencies
         run: yarn install
