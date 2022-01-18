@@ -39,6 +39,8 @@ jobs:
       # view it after
       - name: Display the environment variables after
         run: |
+          pwd
+          ls -al
           cat .env
       # Install 
       - name: Install build dependencies
@@ -46,7 +48,10 @@ jobs:
 
       # Build it
       - name: Build it and they will come
-        run: yarn build
+        run: |
+          pwd
+          ls -al
+          yarn build
 
       # Start tests          
       # TODO : Start up test server
