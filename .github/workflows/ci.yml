@@ -29,7 +29,7 @@ jobs:
         run: yarn install
 
       # Build it
-      - name: Install build dependencies
+      - name: Build it and they will come
         run: yarn build
 
       # Start tests          
